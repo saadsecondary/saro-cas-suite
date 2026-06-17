@@ -75,16 +75,26 @@ export function AppShell({ children }: { children: ReactNode }) {
         ))}
       </nav>
       <div className="px-4 py-3 text-[10px] text-sidebar-muted border-t border-sidebar-border mt-2 leading-relaxed">
-        <div>Zam Zam Traders &middot; v1.0</div>
-        <div className="opacity-80 mt-0.5">Made by Saad Waqas</div>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
+          <span>Zam Zam Traders · v1.0</span>
+        </div>
+        <div className="opacity-70 mt-1">Built by Saro Cas</div>
       </div>
     </>
   );
 
   return (
-    <div className="min-h-screen bg-background text-foreground lg:grid lg:h-screen lg:grid-cols-[232px_1fr] lg:grid-rows-[52px_1fr]">
+    <div className="min-h-screen bg-background text-foreground lg:grid lg:h-screen lg:grid-cols-[232px_1fr] lg:grid-rows-[56px_1fr]">
       {/* Top bar */}
-      <header className="lg:col-span-2 lg:row-start-1 lg:row-end-2 sticky top-0 z-30 flex items-center gap-2 sm:gap-4 border-b border-border bg-sidebar text-sidebar-foreground no-print px-3 h-[52px]">
+      <header
+        className="lg:col-span-2 lg:row-start-1 lg:row-end-2 sticky top-0 z-30 flex items-center gap-2 sm:gap-4 border-b border-sidebar-border text-sidebar-foreground no-print px-3 h-[56px]"
+        style={{
+          background:
+            "linear-gradient(180deg, color-mix(in oklab, var(--color-sidebar) 100%, transparent) 0%, color-mix(in oklab, var(--color-sidebar) 92%, #000 8%) 100%)",
+          boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.04), 0 1px 0 rgba(0,0,0,0.4)",
+        }}
+      >
         <button
           type="button"
           onClick={() => setNavOpen(true)}
@@ -93,22 +103,29 @@ export function AppShell({ children }: { children: ReactNode }) {
         >
           <Menu className="h-5 w-5" />
         </button>
-        <div className="flex items-center gap-3 lg:w-[208px] shrink-0 min-w-0">
+        <div className="flex items-center gap-3 lg:w-[208px] shrink-0 min-w-0 lg:pr-3 lg:border-r lg:border-white/[0.06]">
           <Logo withWordmark />
         </div>
         <button
           type="button"
           onClick={() => setPaletteOpen(true)}
-          className="flex flex-1 max-w-[560px] items-center gap-2 rounded-md border border-white/15 bg-white/[0.06] px-2 sm:px-3 py-1.5 text-[12px] sm:text-[12.5px] text-sidebar-foreground/70 hover:bg-white/[0.10] hover:text-white transition-colors min-w-0"
+          className="group flex flex-1 max-w-[560px] items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 py-1.5 text-[12.5px] text-sidebar-foreground/65 hover:bg-white/[0.09] hover:border-white/20 hover:text-white transition-colors min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
         >
-          <Search className="h-4 w-4 shrink-0" />
+          <Search className="h-4 w-4 shrink-0 opacity-80" />
           <span className="flex-1 text-left truncate">
-            <span className="hidden sm:inline">Search customers, invoices, payments, outstanding, ledger...</span>
-            <span className="sm:hidden">Search...</span>
+            <span className="hidden sm:inline">Search customers, invoices, payments, outstanding, ledger…</span>
+            <span className="sm:hidden">Search…</span>
           </span>
-          <span className="kbd hidden sm:inline-block !bg-white/10 !border-white/20 !text-sidebar-foreground/80">Ctrl K</span>
+          <span className="kbd hidden sm:inline-block !bg-white/10 !border-white/15 !text-sidebar-foreground/80">Ctrl K</span>
         </button>
-        <div className="ml-auto" />
+        <div className="ml-auto hidden md:flex items-center gap-3 text-[11px] text-sidebar-foreground/55 select-none">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
+            <span className="tracking-[0.08em] uppercase">Connected</span>
+          </span>
+          <span className="h-3 w-px bg-white/10" />
+          <span className="font-mono tabular-nums">{new Date().getFullYear()}</span>
+        </div>
       </header>
 
       {/* Sidebar - desktop */}
