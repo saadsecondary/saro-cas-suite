@@ -77,12 +77,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ClientOnly fallback={
-        <div className="flex h-screen items-center justify-center bg-background">
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <span className="inline-block h-3 w-3 animate-pulse rounded-full bg-foreground/40" />
-            Opening, please wait a moment
-          </div>
-        </div>
+        <AppShell>
+          <div className="min-h-[40vh]" />
+        </AppShell>
       }>
         <AppShell>
           <Outlet />
