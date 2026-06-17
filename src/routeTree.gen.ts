@@ -9,38 +9,266 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as OutstandingRouteImport } from './routes/outstanding'
+import { Route as LedgerRouteImport } from './routes/ledger'
+import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as ImportRouteImport } from './routes/import'
+import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as BackupRouteImport } from './routes/backup'
+import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InvoicesNumberRouteImport } from './routes/invoices.$number'
+import { Route as CustomersCodeRouteImport } from './routes/customers.$code'
 
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutstandingRoute = OutstandingRouteImport.update({
+  id: '/outstanding',
+  path: '/outstanding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LedgerRoute = LedgerRouteImport.update({
+  id: '/ledger',
+  path: '/ledger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomersRoute = CustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BackupRoute = BackupRouteImport.update({
+  id: '/backup',
+  path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvoicesNumberRoute = InvoicesNumberRouteImport.update({
+  id: '/$number',
+  path: '/$number',
+  getParentRoute: () => InvoicesRoute,
+} as any)
+const CustomersCodeRoute = CustomersCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => CustomersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/backup': typeof BackupRoute
+  '/customers': typeof CustomersRouteWithChildren
+  '/import': typeof ImportRoute
+  '/invoices': typeof InvoicesRouteWithChildren
+  '/ledger': typeof LedgerRoute
+  '/outstanding': typeof OutstandingRoute
+  '/payments': typeof PaymentsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/customers/$code': typeof CustomersCodeRoute
+  '/invoices/$number': typeof InvoicesNumberRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/backup': typeof BackupRoute
+  '/customers': typeof CustomersRouteWithChildren
+  '/import': typeof ImportRoute
+  '/invoices': typeof InvoicesRouteWithChildren
+  '/ledger': typeof LedgerRoute
+  '/outstanding': typeof OutstandingRoute
+  '/payments': typeof PaymentsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/customers/$code': typeof CustomersCodeRoute
+  '/invoices/$number': typeof InvoicesNumberRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/backup': typeof BackupRoute
+  '/customers': typeof CustomersRouteWithChildren
+  '/import': typeof ImportRoute
+  '/invoices': typeof InvoicesRouteWithChildren
+  '/ledger': typeof LedgerRoute
+  '/outstanding': typeof OutstandingRoute
+  '/payments': typeof PaymentsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/customers/$code': typeof CustomersCodeRoute
+  '/invoices/$number': typeof InvoicesNumberRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/backup'
+    | '/customers'
+    | '/import'
+    | '/invoices'
+    | '/ledger'
+    | '/outstanding'
+    | '/payments'
+    | '/reports'
+    | '/settings'
+    | '/customers/$code'
+    | '/invoices/$number'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activity'
+    | '/backup'
+    | '/customers'
+    | '/import'
+    | '/invoices'
+    | '/ledger'
+    | '/outstanding'
+    | '/payments'
+    | '/reports'
+    | '/settings'
+    | '/customers/$code'
+    | '/invoices/$number'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/backup'
+    | '/customers'
+    | '/import'
+    | '/invoices'
+    | '/ledger'
+    | '/outstanding'
+    | '/payments'
+    | '/reports'
+    | '/settings'
+    | '/customers/$code'
+    | '/invoices/$number'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
+  BackupRoute: typeof BackupRoute
+  CustomersRoute: typeof CustomersRouteWithChildren
+  ImportRoute: typeof ImportRoute
+  InvoicesRoute: typeof InvoicesRouteWithChildren
+  LedgerRoute: typeof LedgerRoute
+  OutstandingRoute: typeof OutstandingRoute
+  PaymentsRoute: typeof PaymentsRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outstanding': {
+      id: '/outstanding'
+      path: '/outstanding'
+      fullPath: '/outstanding'
+      preLoaderRoute: typeof OutstandingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ledger': {
+      id: '/ledger'
+      path: '/ledger'
+      fullPath: '/ledger'
+      preLoaderRoute: typeof LedgerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers': {
+      id: '/customers'
+      path: '/customers'
+      fullPath: '/customers'
+      preLoaderRoute: typeof CustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/backup': {
+      id: '/backup'
+      path: '/backup'
+      fullPath: '/backup'
+      preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +276,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/invoices/$number': {
+      id: '/invoices/$number'
+      path: '/$number'
+      fullPath: '/invoices/$number'
+      preLoaderRoute: typeof InvoicesNumberRouteImport
+      parentRoute: typeof InvoicesRoute
+    }
+    '/customers/$code': {
+      id: '/customers/$code'
+      path: '/$code'
+      fullPath: '/customers/$code'
+      preLoaderRoute: typeof CustomersCodeRouteImport
+      parentRoute: typeof CustomersRoute
+    }
   }
 }
 
+interface CustomersRouteChildren {
+  CustomersCodeRoute: typeof CustomersCodeRoute
+}
+
+const CustomersRouteChildren: CustomersRouteChildren = {
+  CustomersCodeRoute: CustomersCodeRoute,
+}
+
+const CustomersRouteWithChildren = CustomersRoute._addFileChildren(
+  CustomersRouteChildren,
+)
+
+interface InvoicesRouteChildren {
+  InvoicesNumberRoute: typeof InvoicesNumberRoute
+}
+
+const InvoicesRouteChildren: InvoicesRouteChildren = {
+  InvoicesNumberRoute: InvoicesNumberRoute,
+}
+
+const InvoicesRouteWithChildren = InvoicesRoute._addFileChildren(
+  InvoicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
+  BackupRoute: BackupRoute,
+  CustomersRoute: CustomersRouteWithChildren,
+  ImportRoute: ImportRoute,
+  InvoicesRoute: InvoicesRouteWithChildren,
+  LedgerRoute: LedgerRoute,
+  OutstandingRoute: OutstandingRoute,
+  PaymentsRoute: PaymentsRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
