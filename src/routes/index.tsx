@@ -125,7 +125,7 @@ function Dashboard() {
                 <YAxis tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickLine={false} axisLine={false} tickFormatter={v => v >= 100000 ? (v / 100000).toFixed(1) + "L" : String(v)} width={42} />
                 <Tooltip
                   contentStyle={{ background: "white", border: "1px solid var(--color-border)", borderRadius: 8, fontSize: 12 }}
-                  formatter={(v: number) => money(v)}
+                  formatter={(v) => money(Number(v))}
                 />
                 <Area type="monotone" dataKey="sales" stroke="oklch(0.42 0.10 28)" strokeWidth={1.5} fill="url(#g1)" name="Sales" />
                 <Area type="monotone" dataKey="collections" stroke="oklch(0.52 0.10 150)" strokeWidth={1.5} fill="url(#g2)" name="Collections" />
