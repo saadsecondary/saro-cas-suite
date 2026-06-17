@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { cls } from "@/lib/format";
 import {
@@ -25,6 +25,7 @@ const NAV: Array<{ to: string; label: string; icon: any; group?: string }> = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const path = useRouterState({ select: s => s.location.pathname });
+  const navigate = useNavigate();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
@@ -54,12 +55,13 @@ export function AppShell({ children }: { children: ReactNode }) {
               {NAV.filter(n => (n.group ?? "") === g).map(item => {
                 const Active = path === item.to || (item.to !== "/" && path.startsWith(item.to + "/")) || (item.to !== "/" && path.startsWith(item.to));
                 return (
-                  <Link
+                  <button
+                    type="button"
                     key={item.to}
-                    to={item.to}
-                    onClick={() => setNavOpen(false)}
+                    title={`Open ${item.label}`}
+                    onClick={() => { setNavOpen(false); navigate({ to: item.to }); }}
                     className={cls(
-                      "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] transition-colors",
+                      "w-full text-left flex items-center gap-2.5 rounded-md px-2.5 py-2 text-[13px] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-white/30",
                       Active
                         ? "bg-[color-mix(in_oklab,var(--color-sidebar-accent)_22%,transparent)] text-white"
                         : "text-sidebar-foreground/85 hover:bg-white/[0.05]",
@@ -67,7 +69,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                   >
                     <item.icon className="h-4 w-4 opacity-90 shrink-0" />
                     <span className="truncate">{item.label}</span>
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -79,7 +81,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
           <span>Zam Zam Traders · v1.0</span>
         </div>
-        <div className="opacity-70 mt-1">Built by Saro Cas</div>
+        <div className="opacity-70 mt-1">By Saad Waqas</div>
       </div>
     </>
   );
