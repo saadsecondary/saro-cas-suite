@@ -25,6 +25,7 @@ const NAV: Array<{ to: string; label: string; icon: any; group?: string }> = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const path = useRouterState({ select: s => s.location.pathname });
+  const navigate = useNavigate();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
