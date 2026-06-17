@@ -81,7 +81,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
           <span>Zam Zam Traders · v1.0</span>
         </div>
-        <div className="opacity-70 mt-1">Built by Saro Cas</div>
+        <div className="opacity-70 mt-1">By Saad Waqas</div>
       </div>
     </>
   );
